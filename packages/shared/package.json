@@ -1,5 +1,5 @@
 {
-  "name": "pnpmtest",
+  "name": "shared",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,12 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "devDependencies": {
-    "lerna": "^6.6.2"
-  }
+  "license": "ISC"
 }
