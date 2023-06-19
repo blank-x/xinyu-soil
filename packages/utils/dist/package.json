@@ -1,19 +1,13 @@
 {
-  "name": "blank-utils",
-  "version": "1.1.4",
-  "description": "A powerful utils package",
+  "name": "i-utils",
+  "version": "0.0.1",
+  "description": "i-utils",
   "scripts": {
     "build": "sh build.sh",
     "lint": "eslint . --ext '.ts'",
     "cm": "git-cz",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://gitlab.sftcwl.com/sftc-fe/cosmos-utils"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",

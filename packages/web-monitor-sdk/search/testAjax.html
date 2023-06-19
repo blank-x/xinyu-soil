@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./monitor.js"></script>
+</head>
+
+<body>
+  testAjax
+  <script>
+    function getAjax(params) {
+      let xhr = new XMLHttpRequest();
+      xhr.timeout = params.timeout || 10000
+      xhr.open('GET', params.url, true);
+      xhr.onload = function (e) {
+        if (this.status == 200 || this.status == 304) {
+          console.log(this.responseText);
+        }
+        console.log(this.statusText);
+        // console.log(this.status);
+
+      };
+      xhr.ontimeout = function (e) {
+        console.log('timeout');
+      };
+      xhr.onerror = function (e) {
+        console.log('error');
+      };
+      // 上传progress
+      xhr.upload.onprogress = function (e) {
+        console.log(e.lengthComputable);
+        console.log('upload progress');
+      };
+      xhr.onprogress = function (e) {
+        // 3s 后返回数据的时候触发
+        console.log('download progress');
+        if (e.lengthComputable) {
+          console.log(e.loaded + "/" + e.total);
+        }
+      }
+
+      xhr.onloadstart = function () {
+        console.log('onloadstart')
+
+      }
+      xhr.onloadend = function () {
+        console.log(this);
+        console.log('onloadend')
+      }
+      xhr.send();
+    }
+    function sendAjax() {
+      //构造表单数据
+      var formData = new FormData();
+      formData.append('username', 'johndoe');
+      formData.append('id', 123456);
+      //创建xhr对象
+      var xhr = new XMLHttpRequest();
+      //设置xhr请求的超时时间
+      // xhr.timeout = 3000;
+      //设置响应返回的数据格式
+      xhr.responseType = "text";
+      //创建一个 post 请求，采用异步
+      xhr.open('POST', 'http://localhost:8080/payment/testAjax', true);
+      //注册相关事件回调处理函数
+      xhr.onload = function (e) {
+        if (this.status == 200 || this.status == 304) {
+          console.log(this.responseText);
+        }
+      };
+      xhr.ontimeout = function (e) {
+        console.log('timeout');
+      };
+      xhr.onerror = function (e) {
+        console.log('error');
+      };
+      xhr.upload.onprogress = function (e) {
+        console.log('upload progress');
+        if (e.lengthComputable) {
+          console.log(e.loaded + "/" + e.total);
+        }
+      };
+
+      xhr.onprogress = function (e) {
+        // 3s 后返回数据的时候触发
+        console.log('download progress');
+        if (e.lengthComputable) {
+          console.log(e.loaded + "/" + e.total);
+        }
+      }
+
+      //发送数据
+      xhr.send(formData);
+    }
+
+    getAjax({
+      url:'http://localhost:8080/payment/testAjax'
+    })
+    getAjax({
+      url:'http://localhost:8080/payment/testAjaxError',
+      timeout:1000
+    })
+    getAjax({
+      url:'http://localhost:8080/payment/testAjaxError',
+    })
+    getAjax({
+      url:'http://localhost:7080/payment1/testAjaxError',
+    })
+      // sendAjax()
+
+
+  </script>
+</body>
+
+</html>

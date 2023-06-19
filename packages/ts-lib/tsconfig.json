@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": false,
+    "target": "es5",
+    "jsx": "react",
+    "baseUrl": "./",
+    "allowJs": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "containers/*": ["./src/containers/*"],
+      "utils/*": ["./src/utils/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "config/*": ["config/*"],
+      "moment$": ["moment/moment.js"],
+      "common-base": ["./common-base"],
+      "common-system-manage": ["./common-system-manage"],
+      "common-ros": ["./common-ros"]
+    },
+    "experimentalDecorators": true,
+    "types": ["node"],
+    "lib": ["es6", "es2015", "dom", "es2015.promise"],
+    "plugins": [
+      // {
+      //   "name": "typescript-tslint-plugin",
+      //   "alwaysShowRuleFailuresAsWarnings": true,
+      //   "ignoreDefinitionFiles": true,
+      //   "configFile": "./tslint.json",
+      //   "suppressWhileTypeErrorsPresent": false
+      // }
+    ],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  },
+}

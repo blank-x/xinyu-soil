@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["dom", "es2017", "esnext.asynciterable"],
+    "declaration": true,
+    "strict": true,
+    "noImplicitThis": false,
+    "outDir": "./dist",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
