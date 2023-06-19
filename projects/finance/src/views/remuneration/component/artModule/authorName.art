@@ -1,1 +1,0 @@
-<a target="_blank" style="width:110px;display: inline-block" href="{{item.authorId | createPeopleLink}}"   class="hoverLink">{{item.penName}}</a>

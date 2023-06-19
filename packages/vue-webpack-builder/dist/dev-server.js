@@ -6,13 +6,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var opn_1 = __importDefault(require("opn"));
 var path_1 = __importDefault(require("path"));
 var express_1 = __importDefault(require("express"));
+var fs_extra_1 = __importDefault(require("fs-extra"));
 var webpack_1 = __importDefault(require("webpack"));
-var webpack_dev_conf_js_1 = __importDefault(require("./webpack.dev.conf.js"));
 var html_webpack_plugin_1 = __importDefault(require("html-webpack-plugin"));
+var webpack_merge_1 = require("webpack-merge");
+var webpack_dev_conf_js_1 = __importDefault(require("./webpack.dev.conf.js"));
+var customConfig = {};
+if (fs_extra_1.default.exists(process.cwd() + '/webpack.custom.config.js')) {
+    customConfig = require(process.cwd() + '/webpack.custom.config.js');
+}
 var port = 10300;
 var autoOpenBrowser = false;
 var app = (0, express_1.default)();
-var compiler = (0, webpack_1.default)(webpack_dev_conf_js_1.default);
+var compiler = (0, webpack_1.default)((0, webpack_merge_1.merge)(webpack_dev_conf_js_1.default, customConfig));
 // 引入webpack-dev-middleware模块
 // webpack-dev-middleware是基于连接的中间件
 // 它使用webpack对资源进行资源编译并暂存在内存中

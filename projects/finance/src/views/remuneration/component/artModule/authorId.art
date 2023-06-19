@@ -1,2 +1,0 @@
-<!--<a target="_blank" class="hoverLink authorLink">{{item.authorId}}</a>-->
-<a target="_blank" href="http://www.motie.com/manage/people/{{item.authorId}}" class="hoverLink authorLink">{{item.authorId}}</a>

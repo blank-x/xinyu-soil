@@ -1,17 +1,24 @@
 import opn from 'opn';
 import path from 'path';
 import express from 'express';
+import fsExtra from 'fs-extra';
 import webpack from 'webpack';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import webpackConfig from './webpack.dev.conf.js';
 import htmlWebpackPlugin from 'html-webpack-plugin';
+import { merge } from 'webpack-merge';
 import proxyTable from './proxyTable.js';
+import webpackConfig from './webpack.dev.conf.js';
+
+let customConfig = {}
+if(fsExtra.exists(process.cwd() + '/webpack.custom.config.js')){
+  customConfig = require(process.cwd() + '/webpack.custom.config.js');
+}
 
 const port = 10300;
 const autoOpenBrowser = false;
 
 const app = express();
-const compiler = webpack(webpackConfig);
+const compiler = webpack(merge(webpackConfig, customConfig));
 
 // 引入webpack-dev-middleware模块
 // webpack-dev-middleware是基于连接的中间件

@@ -29,7 +29,7 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
     module: {
         rules: [
             {
-                test: /\.(le|c)ss$/,
+                test: /\.less$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
@@ -37,6 +37,24 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
                     'less-loader'
                 ],
                 exclude: /node_modules/
+            },
+            {
+                test: /.s(c|a)ss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    { loader: 'postcss-loader' },
+                    'sass-loader'
+                ],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    { loader: 'postcss-loader' },
+                ],
             }
         ]
     },
@@ -44,7 +62,7 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
         new webpack_1.default.HotModuleReplacementPlugin(),
         new html_webpack_plugin_1.default({
             filename: 'index.html',
-            template: resolvePwd('src/publish/index.html'),
+            template: resolvePwd('public/index.html'),
             minify: {
                 removeAttributeQuotes: false,
                 collapseWhitespace: false
@@ -52,6 +70,11 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
             tinyPath: './static'
         }),
         new webpack_1.default.ProgressPlugin(),
+        new webpack_1.default.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("development"),
+            },
+        }),
         // new webpack.DllReferencePlugin({
         //   manifest: path.resolve(__dirname, '../dist', 'dll', 'manifest.json')
         // }),

@@ -1,1 +1,0 @@
-<span class="{{item.sumMoney>=10000?'danger':''}}">{{(item.sumMoney/100).toFixed(2)}}</span>

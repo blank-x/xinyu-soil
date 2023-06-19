@@ -5,7 +5,7 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -22,18 +22,18 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
-            'src': path.resolve(__dirname, '../src'),
-            'assets': path.resolve(__dirname, '../src/assets'),
-            'components': path.resolve(__dirname, '../src/components'),
-            'views': path.resolve(__dirname, '../src/views'),
-            'styles': path.resolve(__dirname, '../src/styles'),
-            'api': path.resolve(__dirname, '../src/api'),
-            'utils': path.resolve(__dirname, '../src/utils'),
-            'store': path.resolve(__dirname, '../src/store'),
-            'router': path.resolve(__dirname, '../src/router'),
-            'mock': path.resolve(__dirname, '../src/mock'),
-            'vendor': path.resolve(__dirname, '../src/vendor'),
-            'static': path.resolve(__dirname, '../static')
+            'src': resolve('src'),
+            'assets': resolve(src/assets),
+            'components': resolve('src/components'),
+            'views': resolve('src/views'),
+            'styles': resolve('src/styles'),
+            'api': resolve('src/api'),
+            'utils': resolve('src/utils'),
+            'store': resolve('src/store'),
+            'router': resolve('src/router'),
+            'mock': resolve('src/mock'),
+            'vendor': resolve('src/vendor'),
+            'static': resolve('static')
         }
     },
     module: {

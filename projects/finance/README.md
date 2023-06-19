@@ -1,27 +1,18 @@
-# app
+组件
 
-> motie project
+工具方法
 
-## Build Setup
+filter
 
-``` bash
-# install dependencies 安装依赖包
-npm install
+思路：
+  1. 
 
-# serve with hot reload at localhost:8080  启动开发服务
-npm run dev
 
-# build for production with minification 项目打包
-npm run build
+RBAC 权限 基于资源的访问控制
+  用户组
 
-# build for production and view the bundle analyzer report 项目打包资源分享
-npm run build --report 
+diff match  patch  计算json之间差值计算
 
-# run unit tests  单元测试
-npm run unit
+json的查询语言
 
-# run all tests  全局测试
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+DSL 领域特定语言

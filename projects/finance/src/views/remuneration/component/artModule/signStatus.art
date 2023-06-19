@@ -1,1 +1,0 @@
-<span class="{{(!item.signStatus  || item.signStatus==3)?'danger':''}}">{{item.signStatusDesc}}</span>
