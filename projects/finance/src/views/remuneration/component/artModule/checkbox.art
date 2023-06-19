@@ -1,0 +1,7 @@
+<!--<span aria-checked="mixed" class="el-checkbox__input is-checked"  id="spanCheckbox_{{item.id}}">
+    <span class="el-checkbox__inner  el-checkbox__input_td">
+    </span>
+</span>-->
+<span id="spanCheckbox_{{item.id}}">
+<input type="checkbox" value="{{item.id}}" id="check_{{item.id}}" data-id="{{item.id}}" data-money="{{item.money}}" checked class="el-body__input_box">
+</span>

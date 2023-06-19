@@ -1,0 +1,1 @@
+<a target="_blank"  style="width:110px;display: inline-block;" href="{{ item.bookId | createBookLink }}" class="hoverLink">{{item.bookName}}</a>

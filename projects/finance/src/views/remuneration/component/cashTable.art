@@ -1,0 +1,206 @@
+{{each data item index}}
+{{if item.mergeData.id !==undefined }}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 ) ?'#ffffff':'#F2F6FC'}}" id="tr_{{item.id}}">
+    {{if item.mergeData['id']}}
+        <td  rowspan="{{item.mergeData['id']}}">
+            <!--多选列-->
+            <!--<span aria-checked="mixed" class="el-checkbox__input is-checked"  id="spanCheckbox_{{item.id}}">
+                <span class="el-checkbox__inner  el-checkbox__input_td"
+
+                </span>
+            </span>-->
+            <span id="spanCheckbox_{{item.id}}">
+            <input type="checkbox" value="{{item.id}}"
+                   id="check_{{item.id}}"
+                   data-sumMoneyYuan="{{item.sumMoneyYuan}}"
+                   data-sumTaxMoneyYuan="{{item.sumTaxMoneyYuan}}"
+                   data-sumPayMoneyYuan="{{item.sumPayMoneyYuan}}"
+                   data-id="{{item.id}}"
+                   data-money="{{item.money}}" checked class="el-body__input_box">
+            </span>
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--所属月份-->
+            <% include('./artModule/month.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--稿费总收入-->
+            <% include('./artModule/sumMoney.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--税金-->
+            {{item.sumTaxMoneyYuan}}
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--实付-->
+            {{item.sumPayMoneyYuan}}
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--签署人-->
+            <% include('./artModule/realName.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--作者信息-->
+            <div class="tdInfo">
+                {{@ item.accountInfo | authorInfoFilter}}
+            </div>
+        </td>
+        <td rowspan="{{item.mergeData['id']}}">
+            <!--所属公司-->
+            {{item.companyName}}
+        </td>
+    {{/if}}
+    {{if item.mergeData['authorId']}}
+        <td rowspan="{{item.mergeData['authorId']}}">
+            <!--作者Id-->
+            <% include('./artModule/authorId.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['authorId']}}">
+            <!--作者笔名-->
+            <% include('./artModule/authorName.art', {item:item}) %>
+        </td>
+    {{/if}}
+    {{if item.mergeData['bookId']}}
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品ID-->
+            <% include('./artModule/bookId.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品名称-->
+            <% include('./artModule/bookName.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--所属CP-->
+            {{item.cpName}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--合作模式-->
+            <% include('./artModule/payType.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品稿费-->
+            <% include('./artModule/bookMoney.art', {item:item}) %>
+        </td>
+    {{/if}}
+
+    <td class="{{item.manual?'marked':''}}">
+       <!--稿费类型-->
+        <% include('./artModule/type.art', {item:item,env:env}) %>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+    {{if item.mergeData['id']}}
+        <td rowspan="{{item.mergeData['id']}}" class="{{item.manual?'marked':''}}">
+            <!--操作-->
+            <% include('./artModule/handle.art', {item:item,isLock:isLock,pageName:pageName,rejectAuthClass:rejectAuthClass}) %>
+        </td>
+    {{/if}}
+</tr>
+{{else}}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 ) ?'#ffffff':'#F2F6FC'}}" id="tr_{{item.id}}">
+    <td  rowspan="{{item.mergeData['id']}}">
+        <!--多选列-->
+        <!--<span aria-checked="mixed" class="el-checkbox__input is-checked"  id="spanCheckbox_{{item.id}}">
+            <span class="el-checkbox__inner  el-checkbox__input_td"
+                  id="check_{{item.id}}"
+                  data-sumMoneyYuan="{{item.sumMoneyYuan}}"
+                  data-sumTaxMoneyYuan="{{item.sumTaxMoneyYuan}}"
+                  data-sumPayMoneyYuan="{{item.sumPayMoneyYuan}}"
+                  data-id="{{item.id}}"
+                  data-money="{{item.money}}">
+            </span>
+        </span>-->
+        <span id="spanCheckbox_{{item.id}}">
+        <input type="checkbox" value="{{item.id}}"
+               id="check_{{item.id}}"
+               data-sumMoneyYuan="{{item.sumMoneyYuan}}"
+               data-sumTaxMoneyYuan="{{item.sumTaxMoneyYuan}}"
+               data-sumPayMoneyYuan="{{item.sumPayMoneyYuan}}"
+               data-id="{{item.id}}"
+               data-money="{{item.money}}" checked class="el-body__input_box">
+        </span>
+    </td>
+    <td>
+        <!--所属月份-->
+        <% include('./artModule/month.art', {item:item}) %>
+    </td>
+    <td>
+        <!--稿费总收入-->
+        <% include('./artModule/sumMoney.art', {item:item}) %>
+    </td>
+    <td>
+        <!--税金-->
+        {{item.sumTaxMoneyYuan}}
+    </td>
+    <td>
+        <!--实付-->
+        {{item.sumPayMoneyYuan}}
+    </td>
+    <td>
+        <!--签署人-->
+        <% include('./artModule/realName.art', {item:item}) %>
+    </td>
+
+    <td rowspan="{{item.mergeData['id']}}">
+        <!--作者信息-->
+        <div class="tdInfo">
+            {{@ item.accountInfo | authorInfoFilter}}
+        </div>
+    </td>
+    <td rowspan="{{item.mergeData['id']}}">
+        <!--所属公司-->
+        {{item.companyName}}
+    </td>
+    <td rowspan="{{item.mergeData['id']}}">
+        <!--作者Id-->
+        <% include('./artModule/authorId.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['id']}}">
+        <!--作者笔名-->
+        <% include('./artModule/authorName.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--作品ID-->
+        <% include('./artModule/bookId.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--作品名称-->
+        <% include('./artModule/bookName.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--所属CP-->
+        {{item.cpName}}
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--合作模式-->
+        <% include('./artModule/payType.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--作品稿费-->
+        <% include('./artModule/bookMoney.art', {item:item}) %>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费类型-->
+        <% include('./artModule/type.art', {item:item,env:env}) %>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['id']}}" class="{{item.manual?'marked':''}}">
+        <!--操作-->
+        <% include('./artModule/handle.art', {item:item,isLock:isLock,pageName:pageName,rejectAuthClass:rejectAuthClass,}) %>
+    </td>
+</tr>
+{{/if}}
+{{/each}}

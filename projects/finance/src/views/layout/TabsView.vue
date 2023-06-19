@@ -1,0 +1,80 @@
+<template>
+  <div class='tabs-view-container'>
+    <router-link class="tabs-view" v-for="tag in Array.from(visitedViews)" :to="tag.path" :key="tag.path" >
+      <el-tag :closable="true" :type="isActive(tag)?'primary':'info'" @close='closeViewTabs(tag,$event)'>
+        {{tag.name}}
+      </el-tag>
+    </router-link>
+  </div>
+</template>
+
+<script>
+  export default {
+    computed: {
+      visitedViews() {
+        return this.$store.state.app.visitedViews.slice(-6)
+      }
+    },
+    created() {
+      this.addViewTabs()
+    },
+    methods: {
+      closeViewTabs(view, $event) {
+        this.$store.dispatch('delVisitedViews', view).then((views) => {
+          if (this.isActive(view)) {
+            const latestView = views.slice(-1)[0]
+            if (latestView) {
+              this.$router.push(latestView.path)
+            } else {
+              this.$router.push('/')
+            }
+          }
+        })
+        $event.preventDefault()
+      },
+      generateRoute() {
+        if (this.$route.matched[this.$route.matched.length - 1].name) {
+          let routeObj = ''
+          let paramsId = ''
+          for (var i in this.$route.params) {
+            paramsId = this.$route.params[i]
+            break;
+          }
+          routeObj = this.$route.matched[this.$route.matched.length - 1]
+          if (routeObj.path.indexOf(':') != -1) {
+            routeObj.path = routeObj.path.slice(0, routeObj.path.indexOf(':')) + paramsId
+          }
+
+          return routeObj
+//          return this.$route.matched[this.$route.matched.length - 1]
+        }
+        this.$route.matched[0].path = '/'
+        return this.$route.matched[0]
+
+      },
+      addViewTabs() {
+        this.$store.dispatch('addVisitedViews', this.generateRoute())
+      },
+      isActive(route) {
+        return route.path === this.$route.path || route.name === this.$route.name
+      }
+    },
+//    watch: {
+//      $route() {
+//        this.addViewTabs()
+//
+//      }
+//    }
+  }
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .tabs-view-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    .tabs-view {
+      margin-left: 10px;
+    }
+  }
+</style>

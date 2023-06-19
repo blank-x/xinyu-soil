@@ -1,0 +1,1 @@
+{{((item.bookMoneysum || item.money)/100).toFixed(2)}}

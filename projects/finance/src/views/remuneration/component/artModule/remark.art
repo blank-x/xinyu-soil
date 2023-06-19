@@ -1,0 +1,7 @@
+<div  title="{{item.remark}}" style="line-height: 16px;word-wrap:break-word">
+    {{if !item.remark}}
+    ------
+    {{else}}
+    {{item.remark}}
+    {{/if}}
+</div>

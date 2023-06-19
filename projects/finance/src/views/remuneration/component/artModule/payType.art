@@ -1,0 +1,4 @@
+ <div>{{ !item.signStatus ? '------' : item.payTypeDesc}}</div>
+{{if item.signStatus && item.copyrightId && (pageName !=='partnersFirst' && pageName !=='partnersSecond')}}
+        <a class="el-button button-link el-button--text el-button--small" href="{{ item.copyrightId | createCopyrightUrl}}" target="_blank">查看版权</a>
+{{/if}}

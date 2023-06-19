@@ -1,0 +1,1086 @@
+@import './mixin.scss';
+@import './btn.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+
+$appColor: #1aaee5;
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: "Microsoft YaHei,Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,  Arial, sans-serif";
+    font-size: 12px
+}
+
+.marked {
+    background: #FFFDB9 !important;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    font-family: "微软雅黑";
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.padding-content {
+    padding: 4px 0;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a:hover {
+    color: $appColor;
+}
+
+a,
+a:focus {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.pr-15 {
+    padding-right: 15px;
+}
+
+.pl-15 {
+    padding-left: 15px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.pr-35 {
+    padding-right: 35px;
+}
+
+.pl-35 {
+    padding-left: 35px;
+}
+
+.mlr-5 {
+    margin: 0 5px;
+}
+
+.mb-18 {
+    margin-bottom: 18px;
+}
+
+.font-16 {
+    font-size: 16px;
+}
+
+.block {
+    display: block;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.inlineBlock {
+    display: block;
+}
+
+code {
+    background: #eef1f6;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    display: block;
+    line-height: 36px;
+    a {
+        color: #337ab7;
+        cursor: pointer;
+        &:hover {
+            color: rgb(32, 160, 255);
+        }
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .2s ease
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
+}
+
+//main-container全局样式
+.app-container {
+    padding: 10px 20px 10px;
+}
+
+.components-container {
+    margin: 30px 50px;
+    position: relative;
+}
+
+.pagination-container {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.editor-container .CodeMirror {
+    height: 100% !important;
+}
+
+.text-center {
+    text-align: center
+}
+
+.text-left {
+    text-align: left
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.fa-icon {
+    width: 16px;
+    height: 13px;
+    margin-right: 14px;
+    vertical-align: middle;
+}
+
+.sub-navbar {
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    width: 100%;
+    text-align: right;
+    padding-right: 20px;
+    transition: 600ms ease position;
+    background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+    .subtitle {
+        font-size: 20px;
+        color: #fff;
+    }
+    &.draft {
+        background: #d0d0d0;
+    }
+    &.deleted {
+        background: #d0d0d0;
+    }
+}
+
+.link-type,
+.link-type:focus {
+    color: #48576a;
+    cursor: pointer;
+    &:hover {
+        color: rgb(32, 160, 255);
+    }
+}
+
+.publishedTag,
+.draftTag,
+.deletedTag {
+    color: #fff;
+    background-color: $panGreen;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.draftTag {
+    background-color: $yellow;
+}
+
+.deletedTag {
+    background-color: $red;
+}
+
+.input-label {
+    font-size: 14px;
+    color: #48576a;
+    line-height: 1;
+    padding: 11px 5px 11px 0;
+}
+
+.clearfix {
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+}
+
+.no-marginLeft {
+    .el-checkbox {
+        margin: 0 20px 15px 0;
+    }
+    .el-checkbox + .el-checkbox {
+        margin-left: 0px;
+    }
+}
+
+.partnerA-add-dialog {
+    margin-top: 12vh !important;
+    .el-range-input {
+        width: 37%;
+
+    }
+    textarea {
+        padding-bottom: 18px;
+    }
+}
+
+/*
+    修改element  远程select远程搜索 抖动bug
+*/
+.encorrect-eltag-bug {
+    .el-select .el-tag {
+        margin: 0 0 0 6px;
+    }
+}
+
+.filter-container {
+    background: #ffffff;
+    border-bottom: 0px solid #DFE4ED;
+    transition: .2s;
+    padding: 14px 0px 6px 0px;
+    position: relative;
+    margin-bottom: 0px;
+    .filter-item {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 2px;
+    }
+    .el-input__inner {
+        padding: 0 10px;
+    }
+    .el-range-input {
+        width: 37%;
+    }
+    .el-range__close-icon {
+        width: 20px;
+    }
+    .el-btn {
+        margin: 20px 0 20px;
+    }
+    .el-input__icon + .el-input__inner {
+        padding-right: 10px;
+    }
+    .el-input--prefix .el-input__inner {
+        padding-left: 30px;
+    }
+    .el-input--suffix .el-input__inner {
+        padding-right: 30px;
+    }
+    .el-form-item {
+        margin-bottom: 8px;
+        margin-right: 0;
+        &.datepicker-item {
+            margin-bottom: -6px;
+        }
+    }
+    .showMoreFilter {
+        border-top: 1px solid #E6EBF5;
+        height: 12px;
+        text-align: center;
+        margin-top: 4px;
+    }
+    .el-icon-caret-bottom, .el-icon-caret-top {
+        cursor: pointer;
+        color: #D8DCE5;
+        margin-top: 4px;
+        &:hover {
+            color: #409eff;
+        }
+    }
+    .el-button--primary {
+        margin-left: 55px;
+    }
+    .el-form-item__label {
+        padding-right: 3px;
+    }
+    .search-btn-padding {
+        float: right;
+    }
+    label {
+        white-space: nowrap;
+    }
+
+}
+
+// 输入框paddig   非datepicker
+.el-input {
+    &:not(.el-date-editor):not(.el-input--suffix) {
+        .el-input__inner, .el-textarea__inner {
+            padding: 0 10px !important;
+        }
+    }
+}
+
+.el-select__input {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 960px) {
+    .filter-container {
+        .el-input, .el-select {
+            width: 100px !important;
+        }
+        .el-range-editor {
+            width: 225px !important;
+        }
+        .cpListMuti.el-select {
+            width: 180px !important;
+            .el-input {
+                width: 196px !important;
+            }
+            .el-select__tags {
+                max-width: 196px !important;
+            }
+
+        }
+    }
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1440px) {
+    .filter-container {
+        .el-input, .el-select {
+            width: 120px;
+        }
+        .el-cascader--small {
+            .el-input {
+                width: 185px
+            }
+        }
+        .no-resize {
+            .el-input, .el-select {
+                width: 180px;
+            }
+        }
+
+        .cpListMuti.el-select {
+            width: 180px;
+            .el-input {
+                width: 196px !important;
+            }
+            .el-select__tags {
+                max-width: 196px !important;
+
+            }
+        }
+
+        .el-range-editor {
+            width: 265px !important;
+        }
+        .el-button--primary {
+            margin-left: 0px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .filter-container {
+        .el-input, .el-select {
+            width: 180px !important;
+        }
+        .cpListMuti.el-select {
+            width: 180px;
+            .el-input {
+                width: 196px !important;
+            }
+            .el-select__tags {
+                max-width: 196px !important;
+            }
+        }
+    }
+
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+    line-height: 16px;
+}
+
+.multiselect--active {
+    z-index: 1000 !important;
+}
+
+//refine simplemde
+.simplemde-container {
+    .editor-toolbar.fullscreen,
+    .CodeMirror-fullscreen {
+        z-index: 1003;
+    }
+}
+
+//github-corner
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.el-table {
+    .caret-wrapper {
+        display: -moz-inline-stack;
+    }
+    // 出现边框消失
+    margin-top: 2px;
+    td {
+        &:last-child {
+            .cell {
+                i {
+                    color: #8492a6;
+                    cursor: pointer;
+                    font-size: 1.4em;
+                    margin: 0 3px;
+                    &:hover {
+                        color: rgb(32, 160, 255);
+                    }
+                }
+            }
+        }
+        .el-icon-zoom-in {
+            color: #8492a6;
+            cursor: pointer;
+            font-size: 1.4em;
+        }
+        line-height: 16px;
+    }
+    .tdInfo {
+        text-align: left;
+        p {
+            margin: 0px;
+            padding: 0px;
+            label {
+                color: #303133;
+                /* width: 55px;*/
+                height: 16px;
+                line-height: 16px;
+                text-align: right;
+                display: inline-block;
+                vertical-align: top;
+            }
+            span {
+                height: 16px;
+                line-height: 16px;
+                max-width: 75%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
+                &.minW {
+                    width: 80px;
+                }
+            }
+        }
+    }
+    .el-button + .el-button {
+        margin-left: 5px;
+    }
+    .el-table__column-filter-trigger {
+        pointer-events: none;
+    }
+}
+
+.el-popover {
+    font-size: 12px;
+    min-width: auto;
+    padding: 20px;
+    //签约详情样式
+    .infoPopover {
+        margin-bottom: -15px;
+        margin-top: -20px;
+        .infoPopover_title {
+            border-bottom: 1px solid #e4e7ed;
+            font-size: 14px;
+            height: 50px;
+            line-height: 50px;
+            position: relative
+        }
+        p {
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+    //概述 件数 描述类样式
+    &.popover {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+.el-table--small .tdclass {
+    padding: 0px;
+}
+
+.el-table .tdclass .cell {
+    padding: 0px;
+    margin: 0px
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e6ebf5
+}
+
+.line-height {
+    line-height: 0;
+    margin: 0px;
+    line-height: 32px;
+}
+
+//表格无数据样式
+.el-table__body-wrapper {
+    position: static;
+    .el-table__empty-block {
+        position: static;
+        .el-table__empty-text {
+            top: 66%;
+        }
+    }
+}
+
+/*设置签约详情 弹出框样式*/
+.sign_info_dialogClass {
+    @extend .clearfix;
+    padding-bottom: 20px !important;
+
+    .el-dialog__body {
+        padding: 0px 15px 1px !important;
+        @extend .clearfix;
+    }
+    .el-dialog__header {
+        padding: 0;
+        padding-bottom: 18px !important;
+        padding-top: 18px !important;
+    }
+    .el-dialog__title {
+        font-size: 18px !important;
+        font-weight: bold;
+        padding-left: 22px;
+    }
+}
+
+/*清除 type=number  默认样式*/
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.el-checkbox-group {
+    max-height: 300px;
+    overflow: auto;
+}
+
+.el-pr {
+    position: relative;
+}
+
+// 必填项 无红星
+.no-required-star {
+    &.el-form-item.is-required .el-form-item__label:before {
+        content: '';
+        margin-right: 0;
+    }
+}
+
+.el-table .el-loading-mask {
+    z-index: 999
+}
+
+//  操作分隔符 颜色
+.split_span {
+    margin: 0 5px;
+    color: #d7dde4;
+}
+
+//  warging  背景颜色  字体颜色
+.el-alert--warning {
+    background-color: #ffe9c9;
+    color: #d08617;
+}
+
+// 表单 冒号与输入框之间的距离
+.el-form-item__label {
+    padding-right: 3px;
+}
+
+// 表格行高
+.el-table--small td {
+    padding: 4px 0;
+}
+
+.el-form-item.is-success {
+    .el-input__inner {
+        border-color: #dcdfe6 !important;
+
+    }
+    .el-textarea__inner {
+        border-color: #dcdfe6 !important;
+    }
+}
+
+// 在操作列上 决定每行的最小高度
+span.operate {
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+//可视化链接颜色样式
+.aLink {
+    color: #1aaee5;
+}
+
+//次要文字颜色
+.label {
+    color: #909399
+}
+
+.error-color {
+    color: #f56c6c
+}
+
+.red-color {
+    color: red;
+}
+
+//次要资源
+.el-table__expanded-cell {
+    padding: 18px 50px !important;
+}
+
+.secondary {
+    line-height: 25px;
+    label {
+        text-align: right;
+        width: 100px;
+        display: inline-block;
+    }
+
+}
+
+//el-message
+//  warging  背景颜色  字体颜色
+.el-message--warning {
+    background-color: #ffe9c9;
+    .el-message__content {
+        color: #d08617;
+    }
+}
+
+// 确认框样式定义
+.el-message-box {
+    padding-bottom: 18px !important;
+    .el-button--primary {
+        min-width: 60px;
+        &.login-out {
+            width: 100px;
+        }
+    }
+    .el-message-box__header {
+        //padding-top: 18px;
+        .el-message-box__title {
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+    .el-message-box__btns {
+        padding-right: 18px;
+        .el-button--default {
+            min-width: 60px;
+        }
+    }
+}
+
+//el-dialog
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+    width: 480px;
+
+    transform: none;
+    left: 0;
+    position: relative;
+    margin: 0 auto;
+    .el-button--primary {
+        min-width: 88px;
+    }
+    .el-dialog__header {
+        padding: 15px 18px;
+        span {
+            font-size: 16px;
+        }
+    }
+    .el-dialog__body {
+        padding: 3px 18px 1px 18px; //全局样式 勿修改
+        .el-select {
+            width: 240px;
+        }
+
+    }
+    .el-dialog__footer {
+        padding: 0 18px 18px 0;
+    }
+    form {
+        label {
+            font-size: 14px;
+        }
+    }
+    .el-form-item {
+        margin-bottom: 20px;
+    }
+
+}
+
+.rejectHeight {
+    height: 220px;
+    .dialog-footer {
+        button {
+            position: absolute;
+            bottom: 18px;
+            right: 18px
+        }
+    }
+
+}
+
+//表格筛选的样式
+.el-table-filter {
+    margin: 0;
+    .el-table-filter__content {
+        min-width: 0px;
+        padding: 5px 10px 5px 0;
+    }
+    .el-checkbox__label {
+        font-size: 12px;
+    }
+    .el-checkbox__inner {
+        margin-top: 1px;
+    }
+    .el-table-filter__bottom {
+        button {
+            font-size: 12px;
+        }
+    }
+    .el-table-filter__list {
+        min-width: 80px !important;
+        li {
+            padding: 0 0 0px 15px !important;
+            font-size: 12px;
+            color: #303133;
+            &.is-active {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.el-dialog__body {
+    .small-space {
+        margin-bottom: 18px;
+    }
+}
+
+.lineThrough {
+    text-decoration: line-through;
+    text-decoration-color: #c96727;
+    cursor: not-allowed;
+}
+
+/*
+textarea 添加padding-bottom：12px  调整el-form-item>textarea  字数的位置
+*/
+.limit-textarea {
+    &.el-form-item {
+        textarea {
+            padding-bottom: 14px;
+        }
+    }
+}
+
+.summary {
+    border-top: 1px solid #DFE4ED;
+    margin-top: 5px;
+    padding: 20px 0 12px;
+    color: #606266;
+    label {
+        font-size: 14px;
+        span {
+            color: #ff8400;
+            font-weight: bold;
+            margin-left: 6px;
+        }
+        &.line {
+            border-right: 1px solid #DFE4ED;
+            margin: 0 20px;
+        }
+    }
+}
+
+.active {
+    .summaryBox {
+        box-shadow: 8px 4px 8px -5px #888888, -5px 4px 8px -5px #888888;
+        border-top: 1px solid #dcdfe6;
+    }
+}
+
+.summaryBox {
+    background-color: #ffffff;
+    .tabSummary {
+        background: #EBEEF5;
+        ul {
+            padding: 10px 10px 16px 10px;
+            margin: 0px;
+            li {
+                list-style: none;
+                display: inline-block;
+                margin-top: 6px;
+                margin-right: 10px;
+                padding-right: 10px;
+                line-height: 16px;
+                height: 16px;
+                font-size: 14px;
+                border-right: 1px solid #DCDFE6;
+                &:last-child {
+                    border-right: 0px
+                }
+            }
+        }
+    }
+    .summary {
+        margin-top: 10px;
+        padding: 0px 0 10px 15px;
+    }
+}
+
+.uploadLoading {
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0px;
+    color: #dee1e7;
+    .el-message__content {
+        margin-left: 5px;
+    }
+}
+
+.danger {
+    color: #F56C6C;
+}
+
+//结算样式
+.settlement {
+    .settlementDialog {
+        .el-dialog {
+            .el-dialog__body {
+                padding: 0 18px;
+                .el-form-item {
+                    margin-bottom: 18px;
+                    .el-form-item__error {
+                        position: absolute;
+                    }
+                }
+            }
+            .el-dialog__footer {
+                button {
+                    min-width: 60px;
+                }
+            }
+        }
+
+    }
+
+    .el-checkbox-group {
+        label {
+            margin-left: 0 !important;
+        }
+    }
+}
+
+.el-table-column--selection {
+    // fix  table checkbox  bug   CheckBox: fix issue #9677 #9746   https://github.com/ElemeFE/element/issues/9677
+    .el-checkbox__original {
+        left: auto;
+        z-index: -1;
+    }
+    //  修正  第一行的cell  会是padding-left:10px;  但是 checkbox 下的padding-left:14px; padding-right:14px;
+    .cell {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+.el-select-dropdown__empty {
+    padding: 10px;
+}
+
+.auditTableContainer {
+    position: relative;
+    margin-bottom: 40px;
+    min-width: 1630px;
+	tr:hover{
+		background-color: #e8f7fc;
+	}
+    table {
+        table-layout: fixed;
+    }
+    & > div:first-child {
+        width: 100%;
+        position: absolute;
+    }
+    .el-loading-mask {
+        right: -50px;
+    }
+}
+
+.auditTable {
+	background-color:#C0C4CC;
+    th {
+        height: 48px;
+        color: #909399;
+		background-color: #EBEEF5;
+    }
+    .button-link {
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+    td {
+        padding: 4px 7px 4px;
+        text-align: center;
+        color: #606266;
+        height: 46px;
+        a {
+            line-height: 18px;
+        }
+    }
+    .tdInfo {
+        width: 300px;
+        text-align: left;
+        p span {
+            height: 16px;
+            line-height: 16px;
+            //max-width: 75%;
+            //white-space: nowrap;
+            //overflow: hidden;
+            //text-overflow: ellipsis;
+            display: inline-block;
+        }
+        p label {
+            color: #303133;
+            width: 55px;
+            height: 16px;
+            line-height: 16px;
+            text-align: right;
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+}
+
+// 兑现月份 日期控件  placeholder 样式修改
+.cashPlaceHolder {
+    input::-webkit-input-placeholder {
+        color: #606266;
+    }
+}

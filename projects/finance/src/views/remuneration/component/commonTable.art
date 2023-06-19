@@ -1,0 +1,179 @@
+{{each data item index}}
+{{if item.mergeData.authorId!==undefined }}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 ) ?'#ffffff':'#F2F6FC'}}" id="tr_{{item.id}}">
+    <!-- {{if item.mergeData['authorId'] >  1 && trIndex++}}{{/if}}-->
+    {{if item.mergeData['authorId']}}
+        <td rowspan="{{item.mergeData['authorId']}}">
+            <!--作者ID-->
+            <% include('./artModule/authorId.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['authorId']}}">
+            <!--作者笔名-->
+            <% include('./artModule/authorName.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['authorId']}}">
+            <!--稿费总收入-->
+            <% include('./artModule/sumMoney.art', {item:item}) %>
+        </td>
+    {{/if}}
+    {{if item.mergeData['bookId']}}
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品ID-->
+            <% include('./artModule/bookId.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品名称-->
+            <% include('./artModule/bookName.art', {item:item}) %>
+        </td>
+        {{if pageName =='ownFirst' || pageName =='ownSecond'}}
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--责编名称-->
+            {{item.editorName || '无'}}
+        </td>
+        {{/if}}
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--所属CP-->
+            {{item.cpName}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--签约状态-->
+            <% include('./artModule/signStatus.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--合作模式-->
+            <% include('./artModule/payType.art', {item:item,pageName:pageName}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品稿费-->
+            <% include('./artModule/bookMoney.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--签署人-->
+            <% include('./artModule/realName.art', {item:item}) %>
+        </td>
+    {{/if}}
+    {{if pageName !='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <!--多选列-->
+        <% include('./artModule/checkbox.art', {item:item}) %>
+    </td>
+    {{/if}}
+    {{if pageName =='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <span  >{{item.dealMonth.toString() | monthFilter}}</span>
+        <!--兑现失败兑现月份-->
+    </td>
+    {{/if}}
+    <td class="{{item.manual?'marked':''}}">
+       <!--稿费类型-->
+        <% include('./artModule/type.art', {item:item,env:env,dealMonth:dealMonth,pageName:pageName}) %>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+    {{if pageName !='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <!--操作-->
+        <% include('./artModule/handle.art', {item:item,isLock:isLock,pageName:pageName,rejectAuthClass:rejectAuthClass,deleteAuthClass:deleteAuthClass}) %>
+    </td>
+    {{/if}}
+    {{if pageName =='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <!--兑现失败理由-->
+       {{item.inspectResult}}
+    </td>
+    {{/if}}
+</tr>
+{{else}}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 )?'#ffffff':'#F2F6FC'}}" id="tr_{{item.id}}">
+    <td>
+        <!--作者ID-->
+        <% include('./artModule/authorId.art', {item:item}) %>
+    </td>
+    <td>
+        <!--作者笔名-->
+        <% include('./artModule/authorName.art', {item:item}) %>
+    </td>
+    <td>
+        <!--稿费总收入-->
+        <% include('./artModule/sumMoney.art', {item:item}) %>
+    </td>
+    <td>
+        <!--作品ID-->
+        <% include('./artModule/bookId.art', {item:item}) %>
+    </td>
+    <td>
+        <!--作品名称-->
+        <% include('./artModule/bookName.art', {item:item}) %>
+    </td>
+    {{if pageName =='ownFirst' || pageName =='ownSecond'}}
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--责编名称-->
+        {{item.editorName || '无'}}
+    </td>
+    {{/if}}
+    <td>
+        <!--所属CP-->
+        {{item.cpName}}
+    </td>
+    <td>
+        <!--签约状态-->
+        <% include('./artModule/signStatus.art', {item:item}) %>
+    </td>
+    <td>
+        <!--合作模式-->
+        <% include('./artModule/payType.art', {item:item,pageName:pageName}) %>
+    </td>
+    <td>
+        <!--作品稿费-->
+        <% include('./artModule/bookMoney.art', {item:item}) %>
+    </td>
+    <td>
+        <!--签署人-->
+        <% include('./artModule/realName.art', {item:item}) %>
+    </td>
+    {{if pageName !='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <!--多选列-->
+        <% include('./artModule/checkbox.art', {item:item}) %>
+    </td>
+    {{/if}}
+    {{if pageName =='cashFail'}}
+    <td class="{{item.manual?'marked':''}}">
+        <span  >{{item.dealMonth.toString() | monthFilter}}</span>
+        <!--兑现失败兑现月份-->
+    </td>
+    {{/if}}
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费类型-->
+        <% include('./artModule/type.art', {item:item,env:env,dealMonth:dealMonth,pageName:pageName}) %>
+    </td>
+    <!--稿费列-->
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+    {{if pageName !='cashFail'}}
+        <td class="{{item.manual?'marked':''}}">
+            <!--操作-->
+            <% include('./artModule/handle.art', {item:item,isLock:isLock,pageName:pageName,rejectAuthClass:rejectAuthClass,deleteAuthClass:deleteAuthClass}) %>
+        </td>
+    {{/if}}
+    {{if pageName =='cashFail'}}
+        <td class="{{item.manual?'marked':''}}">
+            <!--兑现失败理由-->
+            {{item.inspectResult}}
+        </td>
+    {{/if}}
+</tr>
+{{/if}}
+{{/each}}

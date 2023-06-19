@@ -1,0 +1,146 @@
+{{each data item index}}
+{{if item.mergeData.userId!==undefined }}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 ) ?'#ffffff':'#F2F6FC'}}">
+    <!-- {{if item.mergeData['authorId'] >  1 && trIndex++}}{{/if}}-->
+    {{if item.mergeData['userId']}}
+        <td rowspan="{{item.mergeData['userId']}}">
+            <!--作者ID-->
+            <a target="_blank" href="http://www.motie.com/manage/people/{{item.userId}}" class="hoverLink authorLink">{{item.userId}}</a>
+        </td>
+        <td rowspan="{{item.mergeData['userId']}}">
+            <!--作者笔名-->
+            <% include('./artModule/authorName.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['userId']}}">
+            <!--缺陷提示-->
+            <span>{{item.failRemark}}</span>
+        </td>
+        <td rowspan="{{item.mergeData['userId']}}">
+            <!--基本信息-->
+            <div class="tdInfo">
+                <p><label>证件类型:</label> <span>{{item.idTypeStr || "------"}}</span></p>
+                <p><label>证件号码:</label> <span>{{item.idNo || "------"}}</span></p>
+                <p><label>开户行:</label> <span title={{item.bankBranch}}>{{item.bankBranch || "------"}}</span></p>
+                <p><label>银行账号:</label> <span>{{item.bankAccount || "------"}}</span></p>
+                <p><label>手机号码:</label> <span>{{item.mobile || "------"}}</span></p>
+            </div>
+        </td>
+    {{/if}}
+    {{if item.mergeData['bookId']}}
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品ID-->
+            <% include('./artModule/bookId.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品名称-->
+            <% include('./artModule/bookName.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--责编名称-->
+            {{item.editorName || '无'}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--所属CP-->
+            {{item.cpName}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--签约状态-->
+            {{item.signStatuStr}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--合作模式-->
+            {{item.payTypeStr}}
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--作品稿费-->
+            <% include('./artModule/bookMoney.art', {item:item}) %>
+        </td>
+        <td rowspan="{{item.mergeData['bookId']}}">
+            <!--签署人-->
+            <% include('./artModule/realName.art', {item:item}) %>
+        </td>
+    {{/if}}
+    <td class="{{item.manual?'marked':''}}">
+       <!--稿费类型-->
+        {{item.payLogTypeStr}}
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+</tr>
+{{else}}
+<tr bgcolor="{{ (data[0].mergeIndex%2 ?item.mergeIndex%2:(item.mergeIndex+1)%2 )?'#ffffff':'#F2F6FC'}}" id="tr_{{item.id}}">
+    <td>
+        <a target="_blank" href="http://www.motie.com/manage/people/{{item.userId}}" class="hoverLink authorLink">{{item.userId}}</a>
+    </td>
+    <td>
+        <!--作者笔名-->
+        <% include('./artModule/authorName.art', {item:item}) %>
+    </td>
+    <td>
+        <!--缺陷提示-->
+        <span>{{item.failRemark}}</span>
+    </td>
+    <td>
+        <!--基本信息-->
+        <div class="tdInfo">
+            <p><label>证件类型:</label> <span>{{item.idTypeStr || "------"}}</span></p>
+            <p><label>证件号码:</label> <span>{{item.idNo || "------"}}</span></p>
+            <p><label>开户行:</label> <span title={{item.bankBranch}}>{{item.bankBranch || "------"}}</span></p>
+            <p><label>银行账号:</label> <span>{{item.bankAccount || "------"}}</span></p>
+            <p><label>手机号码:</label> <span>{{item.mobile || "------"}}</span></p>
+        </div>
+    </td>
+    <td>
+        <!--作品ID-->
+        <% include('./artModule/bookId.art', {item:item}) %>
+    </td>
+    <td>
+        <!--作品名称-->
+        <% include('./artModule/bookName.art', {item:item}) %>
+    </td>
+    <td rowspan="{{item.mergeData['bookId']}}">
+        <!--责编名称-->
+        {{item.editorName || '无'}}
+    </td>
+    <td>
+        <!--所属CP-->
+        {{item.cpName}}
+    </td>
+    <td>
+        <!--签约状态-->
+        {{item.signStatuStr}}
+    </td>
+    <td>
+        <!--合作模式-->
+        {{item.payTypeStr}}
+    </td>
+    <td>
+        <!--作品稿费-->
+        <% include('./artModule/bookMoney.art', {item:item}) %>
+    </td>
+    <td>
+        <!--签署人-->
+        <% include('./artModule/realName.art', {item:item}) %>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费类型-->
+        {{item.payLogTypeStr}}
+    </td>
+    <!--稿费列-->
+    <td class="{{item.manual?'marked':''}}">
+        <!--稿费-->
+        <span>{{(item.money/100).toFixed(2)}}</span>
+    </td>
+    <td class="{{item.manual?'marked':''}}">
+        <!--备注-->
+        <% include('./artModule/remark.art', {item:item}) %>
+    </td>
+</tr>
+{{/if}}
+{{/each}}
