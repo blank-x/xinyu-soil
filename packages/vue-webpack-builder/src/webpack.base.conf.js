@@ -38,6 +38,14 @@ export default {
     noParse: /jquery|loadsh/,
     rules: [
       {
+        test: /\.(vue|js)$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        overrideConfigFile: resolve('.eslintrc.js'),
+        exclude: /node_modules/
+      },
+      {
+        
         test: /\.js$/,
         use: [
           {

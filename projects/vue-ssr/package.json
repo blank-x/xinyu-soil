@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "blank-pkg1": "workspace:^",
     "accounting": "^0.4.1",
     "art-template": "^4.12.2",
     "art-template-loader": "^1.4.3",
