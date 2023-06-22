@@ -3,6 +3,7 @@ import { VueLoaderPlugin } from "vue-loader";
 import webpack from "webpack";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
+import EslintPlugin from "eslint-webpack-plugin";
 // import ModuleScopePlugin from 'react-dev-utils/ModuleScopePlugin';
 
 function resolve(dir = "") {
@@ -37,13 +38,6 @@ export default {
   module: {
     noParse: /jquery|loadsh/,
     rules: [
-      {
-        test: /\.(vue|js)$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        overrideConfigFile: resolve('.eslintrc.js'),
-        exclude: /node_modules/
-      },
       {
         
         test: /\.js$/,
@@ -127,5 +121,8 @@ export default {
       contextRegExp: /moment$/,
     }),
     new CaseSensitivePathsPlugin(),
+    new EslintPlugin({
+      overrideConfigFile: resolve(".eslintrc.js"),
+    }),
   ],
 };

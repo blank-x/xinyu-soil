@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
     <div>
-      <el-button v-waves type="plain" icon="el-icon-refresh">搜索</el-button>
+      <button v-waves type="plain" icon="el-icon-refresh">搜索</button>
     </div>
     <div>
 

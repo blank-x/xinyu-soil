@@ -8,8 +8,7 @@
   },
   "scripts": {
     "compile": "rimraf dist && babel src -d dist",
-    "watch": "npm run compile -- --watch",
-    "postinstall": "zli config init"
+    "watch": "npm run compile -- --watch"
   },
   "repository": {
     "type": "git",
