@@ -33,3 +33,11 @@ npm link 将 zli 命令链到环境变量；
 ### 发布
 
 开发完成后，即可发布至 npm.
+
+
+
+
+os.homedir()  + '.tool'  // 目录 可以作为放置配置的地方
+
+使用exec 处理 npm install 看看会有哪些log信息回打印出；
+
