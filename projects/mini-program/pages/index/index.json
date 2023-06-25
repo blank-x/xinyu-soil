@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "xxxx": "/components/a2/a2"
+  },
+  "navigationBarTitleText": "导航栏自定义",
+  "navigationStyle":"custom"
+}

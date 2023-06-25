@@ -4,6 +4,7 @@ bcryptjs 加密
 cross-env  跨系统兼容 环境变量设置
 ioredis  适配nodejs的redis客户端
 ip-filter  ip匹配校验工具
+ip  ip工具
 koa-body
 koa-favicon
 koa-router
@@ -37,3 +38,5 @@ vm2  提供沙箱环境执行js
 koa-webpack-middleware  这个包有些老了，看看能不能自己升级一下
 
 transliteration  翻译中文有用
+
+nanoid 随机id ，url友好

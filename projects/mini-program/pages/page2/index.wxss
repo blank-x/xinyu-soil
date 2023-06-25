@@ -1,0 +1,5 @@
+/* pages/page2/index.wxss */
+.box{
+    background-color: azure;
+    height: 2000rpx;
+}

@@ -1,0 +1,11 @@
+<!--pages/page2/index.wxml-->
+<text>pages/page2/index.wxml</text>
+<view>{{mod1.say()}}</view>
+<wxs module="mod1">
+  module.exports.say = function(){
+    return 'say'
+  }
+</wxs>
+<view class="box">
+    
+</view>

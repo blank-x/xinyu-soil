@@ -30,6 +30,7 @@ export default {
     mainFields: ["browser", "module", "main"],
     alias: {
       src: resolvePwd("src"),
+      '@': resolvePwd("src"),
     },
     plugins: [
       // new ModuleScopePlugin([path.resolve(__dirname,'../src'),path.resolve(__dirname,'../node_modules')]),

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <p>message: {{ message }}</p> -->
+    <p>obj: {{msg2}} </p>
+    <p>{{ff}}</p>
+    <z-button text="hello" ref='ref1' @click="log">ddd</z-button>
+   </div>
+  <script type="module">
+    import {createApp, ref, computed, reactive, toRefs, toRef, isRef, watch, onMounted, getCurrentInstance} from './vue3.esm-browser.js'
+
+    const zButton = {
+      props: ['text'],
+      emits: ['click'],
+      expose: ['ff','log'],
+      setup(props, context) {
+        return {
+          ff: 'hello'
+        }
+      },
+      methods: {
+        log() {
+          console.log(this.message);
+        }
+      },
+      template: `
+        <button @click="$emit('click')"><slot></slot></button>
+      `
+    }
+
+    const app = createApp({
+      components: {
+        'z-button': zButton,
+      },
+      setup(props,context) {
+        let msg = reactive({name: 'hello'})
+        let msg2 = ref(msg)
+        let ref1 = ref(null)
+        onMounted(() => {
+          console.log(ref1.value.log)
+        })
+        return {
+          msg2,
+          ref1
+        }
+        
+      },
+      created() {
+        let msg = reactive({name: 'hello'});
+        this.ff = msg;
+        setTimeout(() => {
+          this.ff.name = 'world'
+        }, 2000);
+       
+      }
+    })
+    app.mount('#app')
+  </script>
+</body>
+</html>

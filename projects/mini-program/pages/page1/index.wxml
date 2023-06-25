@@ -1,0 +1,13 @@
+<!--pages/page1/index.wxml-->
+<text selectable>pages/page1/index.wxml</text>
+<rich-text>sdfsdfsdfsdf</rich-text>
+<rich-text sdsd="sddssd" name="ddddd" nodes="<h1>sdfsdf</h1">sdfsdfsdfsdf</rich-text>
+<rich-text nodes="{{[{type: 'text', text: 'sdfsdfsdf111'}]}}"></rich-text>
+<rich-text nodes="{{[{name: 'div',attrs:{class: 'div_class',style: 'line-height: 60px; color: #1AAD19;'}, children:[{type:'text',text:'sdfdsf'}]}]}}"></rich-text>
+<button bindgetphonenumber="bindgetphonenumber" open-type="getPhoneNumber" >1111</button>
+<button open-type="share" type="primary">share</button>
+<view>number</view>
+<button bindtap="bindTap" data-name="{{number}}" type="primary">ssss</button>
+<input value="{{msg}}" bindinput="inputHandler"></input>
+
+<button bindtap="getData">发起get请求</button>

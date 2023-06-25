@@ -1,0 +1,3 @@
+<!--components/a2.wxml-->
+<text>components/a2.wxml</text>
+<button bindtap="bindtapHander">chak</button>
