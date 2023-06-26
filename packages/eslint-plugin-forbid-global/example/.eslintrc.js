@@ -7,7 +7,7 @@ module.exports = {
     "plugin:eslint-plugin/recommended",
     "plugin:node/recommended",
   ],
-  Plugins: ["eslint-plugin-forbid-global"],
+  plugins: ["eslint-plugin-forbid-global"],
   env: {
     node: true,
   },
