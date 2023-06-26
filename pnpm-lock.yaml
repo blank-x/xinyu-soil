@@ -125,6 +125,12 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
 
+  packages/eslint-plugin-forbid-global/ex:
+    dependencies:
+      eslint-plugin-forbid-global:
+        specifier: workspace:^
+        version: link:..
+
   packages/forward-proxy: {}
 
   packages/react-common-hooks: {}
