@@ -1,27 +1,20 @@
-/**
- * @fileoverview asdasds
- * @author sss
- */
-"use strict";
-
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-
-const requireIndex = require("requireindex");
-
-//------------------------------------------------------------------------------
-// Plugin Definition
-//------------------------------------------------------------------------------
-
-
-// import all rules in lib/rules
-module.exports.rules = requireIndex(__dirname + "/rules");
-
-
-
-// import processors
+module.exports.rules = {
+  'no-global': require('./no-global'),
+}
 module.exports.processors = {
-  // add your processors here
+  meta: {
+    name: "no-globals",  
+    description: "禁止使用全局变量",
+    version: "0.0.1",
+  },
+  // Fix no parsing of HTML tags.
+  ".fff": {
+    preprocess: function(text, filename) {
+      const tpl = `<div>${text}</div>`;
+      return [tpl];
+    },
+    postprocess: function(messages, filename) {
+      return [].concat(...messages);
+    }
+  }
 };
-
