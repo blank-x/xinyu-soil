@@ -1,1 +1,1 @@
-console.log('1212')
+window.eval('')

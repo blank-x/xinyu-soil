@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint . --ext .js",
+    "eslint:fix" : "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-forbid-global": "workspace:^"
+    "eslint-plugin-forbid-global": "workspace:^",
+    "eslint": "^8.19.0"
   }
 }

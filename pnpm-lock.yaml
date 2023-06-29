@@ -131,6 +131,15 @@ importers:
         specifier: workspace:^
         version: link:..
 
+  packages/eslint-plugin-forbid-global/example:
+    dependencies:
+      eslint:
+        specifier: ^8.19.0
+        version: 8.43.0
+      eslint-plugin-forbid-global:
+        specifier: workspace:^
+        version: link:..
+
   packages/forward-proxy: {}
 
   packages/react-common-hooks: {}

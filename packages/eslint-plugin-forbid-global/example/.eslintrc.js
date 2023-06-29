@@ -6,10 +6,14 @@ module.exports = {
     "eslint:recommended",
     "plugin:eslint-plugin/recommended",
     "plugin:node/recommended",
+    "plugin:forbid-global/recommended",
   ],
-  plugins: ["eslint-plugin-forbid-global"],
   env: {
-    node: true,
+    browser: true,
+  },
+  rules: {
+    "no-restricted-globals": ["error", "event", "asdfsdfsdf"],
+    "no-eval": ["error", {"allowIndirect": true}] ,
   },
   overrides: [
     {

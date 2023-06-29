@@ -1,20 +1,22 @@
-module.exports.rules = {
-  'no-global': require('./no-global'),
-}
-module.exports.processors = {
+
+module.exports = {
   meta: {
-    name: "no-globals",  
+    name: "no-globals",
     description: "禁止使用全局变量",
     version: "0.0.1",
   },
-  // Fix no parsing of HTML tags.
-  ".fff": {
-    preprocess: function(text, filename) {
-      const tpl = `<div>${text}</div>`;
-      return [tpl];
-    },
-    postprocess: function(messages, filename) {
-      return [].concat(...messages);
+  rules: {
+    'no-global': require('./rules/no-global'),
+  },
+  configs: {
+    recommended: {
+      rules: {
+        'forbid-global/no-global': 'error',
+      },
+      plugins: ['forbid-global'],
     }
   }
 };
+
+
+console.log(12121)

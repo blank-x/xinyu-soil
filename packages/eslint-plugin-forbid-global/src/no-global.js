@@ -41,7 +41,8 @@ module.exports = {
 
     return {
       Program() {
-        const scope = context.getScope();
+        // const scope = context.getScope();
+
         scope.variables.forEach((variable) => {
           if (!variable.defs.length && isRestricted(variable.name)) {
             variable.references.forEach(reportReference);
