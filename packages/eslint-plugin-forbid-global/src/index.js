@@ -3,7 +3,7 @@ module.exports.rules = {
 }
 module.exports.processors = {
   meta: {
-    name: "no-globals",  
+    name: "eslint-plugin-forbid-global",  
     description: "禁止使用全局变量",
     version: "0.0.1",
   },
