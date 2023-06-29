@@ -1,7 +1,7 @@
 
 module.exports = {
   meta: {
-    name: "no-globals",
+    name: "eslint-plugin-forbid-global",
     description: "禁止使用全局变量",
     version: "0.0.1",
   },
@@ -17,6 +17,3 @@ module.exports = {
     }
   }
 };
-
-
-console.log(12121)

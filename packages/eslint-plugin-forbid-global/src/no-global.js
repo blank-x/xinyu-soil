@@ -6,6 +6,7 @@ module.exports = {
   // https://eslint.org/docs/latest/extend/plugins#metadata-in-plugins
   meta: {
     type: "suggestion",
+    messages: '撒大声地',
     docs: {
         description: "Description of the rule",
     },
@@ -13,11 +14,7 @@ module.exports = {
     schema: [] // no options
   },
   create: function (context) {
-    const restrictedGlobalMessages = [
-      ...windowGlobal,
-      ...webGlobal,
-      ...browserCustomGlobal,
-    ].reduce((memo, property) => {
+    const restrictedGlobalMessages = globals.reduce((memo, property) => {
       memo[property] = `禁止使用${property}`;
       return memo;
     }, {});
@@ -28,7 +25,7 @@ module.exports = {
 
       context.report({
         node: reference.identifier,
-        message,
+        messageId: message,
       });
     }
 
