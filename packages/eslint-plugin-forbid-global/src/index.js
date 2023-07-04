@@ -6,12 +6,14 @@ module.exports = {
     version: "0.0.1",
   },
   rules: {
-    'no-global': require('./rules/no-global'),
+    'no-global': require('./rules/no-lodash-bundle'),
+    'no-modify-global': require('./rules/no-modify-global'),
   },
   configs: {
     recommended: {
       rules: {
-        'forbid-global/no-global': 'error',
+        'forbid-global/no-lodash-bundle': 'error',
+        'forbid-global/no-modify-global': ['error'],
       },
       plugins: ['forbid-global'],
     }
