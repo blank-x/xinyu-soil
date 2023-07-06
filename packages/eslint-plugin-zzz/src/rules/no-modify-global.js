@@ -35,7 +35,7 @@ module.exports = {
     schema: {
       type: "array",
       items: {
-        type: ['string', null]
+        type: ['string']
       },
       uniqueItems: true,
       minItems: 0

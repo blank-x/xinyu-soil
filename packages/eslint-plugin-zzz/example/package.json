@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-forbid-global": "workspace:^",
+    "eslint-plugin-zzz": "workspace:^",
     "eslint": "^8.19.0"
   }
 }

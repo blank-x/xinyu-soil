@@ -5,17 +5,17 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:eslint-plugin/recommended",
-    "plugin:forbid-global/recommended",
+    "plugin:zzz/recommended",
   ],
   env: {
     browser: true,
     es2020: true,
   },
   rules: {
-    "no-eval": ["error"] ,
-    "forbid-global/no-modify-global": ["error", '__INITIAL_DATA__', '__INITIAL_DATA__111'],
+    // "zzz/no-modify-global": ["error", '__INITIAL_DATA__', '__INITIAL_DATA__111'],
+    'no-implied-eval': 'error',
   },
   globals: {
-    '__INITIAL_DATA__': 'writable',
+    '__INITIAL_DATA__': 'readonly',
   }
 };

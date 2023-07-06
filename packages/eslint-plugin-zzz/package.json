@@ -1,7 +1,7 @@
 {
-  "name": "eslint-plugin-forbid-global",
+  "name": "eslint-plugin-zzz",
   "version": "0.0.1",
-  "description": "eslint-plugin-forbid-global",
+  "description": "eslint-plugin-zzz",
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -18,8 +18,7 @@
     "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
     "lint:js": "eslint .",
     "test": "mocha tests --recursive",
-    "update:eslint-docs": "eslint-doc-generator",
-    "test1": "node ./tests/lib/rules/global.test.js"
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "dependencies": {
     "requireindex": "^1.2.0"
