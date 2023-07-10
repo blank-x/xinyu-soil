@@ -3,7 +3,7 @@ module.exports = {
     root: true,
     parserOptions: {
         sourceType: 'module',
-        ecmaVersion: 2017,
+        ecmaVersion: 2022,
     },
     env: {
         browser: true,
@@ -11,7 +11,7 @@ module.exports = {
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     extends: ['plugin:vue/recommended'],
   // required to lint *.vue files
-  
+
   // add your custom rules here
     'rules': {
     	'no-console' :['error',{

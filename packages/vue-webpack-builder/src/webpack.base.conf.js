@@ -4,6 +4,7 @@ import webpack from "webpack";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import EslintPlugin from "eslint-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 // import ModuleScopePlugin from 'react-dev-utils/ModuleScopePlugin';
 
 function resolve(dir = "") {
@@ -40,7 +41,7 @@ export default {
     noParse: /jquery|loadsh/,
     rules: [
       {
-        
+
         test: /\.js$/,
         use: [
           {
@@ -123,7 +124,16 @@ export default {
     }),
     new CaseSensitivePathsPlugin(),
     new EslintPlugin({
-      overrideConfigFile: resolve(".eslintrc.js"),
+      overrideConfigFile: resolve("eslintrc.conf.js"),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: resolvePwd('public/index.html'),
+      minify: {
+        removeAttributeQuotes: false,
+        collapseWhitespace: false
+      },
+      tinyPath: './static'
     }),
   ],
 };

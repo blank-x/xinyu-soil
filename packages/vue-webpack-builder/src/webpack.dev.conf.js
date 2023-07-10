@@ -8,22 +8,17 @@ import baseWebpackConfig from './webpack.base.conf.js';
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
-function resolvePwd(dir) {
-  return path.join(process.cwd(), dir);
-}
 
+const entry = {};
 Object.keys(baseWebpackConfig.entry).forEach((name) => {
-  baseWebpackConfig.entry[name] = [resolve('./hot-reload-client.js')].concat(baseWebpackConfig.entry[name]);
+  entry[name] = [resolve('./hot-reload-client.js')].concat(baseWebpackConfig.entry[name]);
 });
 
 export default merge(baseWebpackConfig, {
   mode: 'development',
   devtool: 'eval-cheap-module-source-map',
-  entry: {},
+  entry,
   output: {},
-  resolve: {
-    alias: {}
-  },
   module: {
     rules: [
       {
@@ -58,15 +53,7 @@ export default merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: resolvePwd('public/index.html'),
-      minify: {
-        removeAttributeQuotes: false,
-        collapseWhitespace: false
-      },
-      tinyPath: './static'
-    }),
+
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
 			"process.env": {

@@ -12,20 +12,15 @@ var webpack_base_conf_js_1 = __importDefault(require("./webpack.base.conf.js"));
 function resolve(dir) {
     return path_1.default.join(__dirname, dir);
 }
-function resolvePwd(dir) {
-    return path_1.default.join(process.cwd(), dir);
-}
+var entry = {};
 Object.keys(webpack_base_conf_js_1.default.entry).forEach(function (name) {
-    webpack_base_conf_js_1.default.entry[name] = [resolve('./hot-reload-client.js')].concat(webpack_base_conf_js_1.default.entry[name]);
+    entry[name] = [resolve('./hot-reload-client.js')].concat(webpack_base_conf_js_1.default.entry[name]);
 });
 exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
     mode: 'development',
     devtool: 'eval-cheap-module-source-map',
-    entry: {},
+    entry: entry,
     output: {},
-    resolve: {
-        alias: {}
-    },
     module: {
         rules: [
             {
@@ -60,15 +55,6 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
     },
     plugins: [
         new webpack_1.default.HotModuleReplacementPlugin(),
-        new html_webpack_plugin_1.default({
-            filename: 'index.html',
-            template: resolvePwd('public/index.html'),
-            minify: {
-                removeAttributeQuotes: false,
-                collapseWhitespace: false
-            },
-            tinyPath: './static'
-        }),
         new webpack_1.default.ProgressPlugin(),
         new webpack_1.default.DefinePlugin({
             "process.env": {
