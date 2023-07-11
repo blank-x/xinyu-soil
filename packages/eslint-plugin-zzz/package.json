@@ -1,11 +1,14 @@
 {
-  "name": "eslint-plugin-forbid-global",
+  "name": "eslint-plugin-zzz",
   "version": "0.0.1",
-  "description": "eslint-plugin-forbid-global",
+  "description": "eslint-plugin-zzz",
   "keywords": [
     "eslint",
     "eslintplugin",
     "eslint-plugin"
+  ],
+  "files": [
+    "src"
   ],
   "author": "sss",
   "main": "./src/index.js",

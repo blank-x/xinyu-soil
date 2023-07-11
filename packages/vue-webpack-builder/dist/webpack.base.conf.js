@@ -9,6 +9,7 @@ var webpack_1 = __importDefault(require("webpack"));
 var friendly_errors_webpack_plugin_1 = __importDefault(require("friendly-errors-webpack-plugin"));
 var case_sensitive_paths_webpack_plugin_1 = __importDefault(require("case-sensitive-paths-webpack-plugin"));
 var eslint_webpack_plugin_1 = __importDefault(require("eslint-webpack-plugin"));
+var html_webpack_plugin_1 = __importDefault(require("html-webpack-plugin"));
 // import ModuleScopePlugin from 'react-dev-utils/ModuleScopePlugin';
 function resolve(dir) {
     if (dir === void 0) { dir = ""; }
@@ -125,7 +126,16 @@ exports.default = {
         }),
         new case_sensitive_paths_webpack_plugin_1.default(),
         new eslint_webpack_plugin_1.default({
-            overrideConfigFile: resolve(".eslintrc.js"),
+            overrideConfigFile: resolve("eslintrc.conf.js"),
+        }),
+        new html_webpack_plugin_1.default({
+            filename: 'index.html',
+            template: resolvePwd('public/index.html'),
+            minify: {
+                removeAttributeQuotes: false,
+                collapseWhitespace: false
+            },
+            tinyPath: './static'
         }),
     ],
 };

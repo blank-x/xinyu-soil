@@ -1,30 +1,26 @@
-var path = require('path')
-var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-const {merge} = require('webpack-merge')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
-const {WebpackManifestPlugin} = require('webpack-manifest-plugin')
-const config = require('../src/template/config').build
 
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
+import path from 'path';
+import baseWebpackConfig from './webpack.base.conf';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { merge } from 'webpack-merge';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+import cdnUpload from './cdn-upload-plugin'
+
+function resolvePwd(dir) {
+  return path.join(process.cwd(), dir);
 }
 
 
 var webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  entry: {},
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: resolvePwd('dist'),
     filename: 'js/[name].[contenthash:8].js',
-    chunkFilename: 'js/[name].[contenthash:8].js'
-  },
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-
+    chunkFilename: 'js/[name].[contenthash:8].js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -40,6 +36,16 @@ var webpackConfig = merge(baseWebpackConfig, {
         ],
         exclude: /node_modules/
       },
+      {
+        test: /.s(c|a)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          { loader: 'postcss-loader' },
+          'sass-loader'
+        ],
+        exclude: /node_modules/
+      },
     ]
   },
   devtool: false,
@@ -49,11 +55,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     runtimeChunk: 'single',
     splitChunks:{
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]moment/,
-          name: 'moment',
-          chunks: 'all',
-        },
+
       },
     }
 
@@ -63,23 +65,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/*', '!dll', '!dll/**'] //不删除dll目录
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: resolve('src/template/index.html'),
-      minify: {
-        removeAttributeQuotes: false, //是否删除属性的双引号
-        collapseWhitespace: false, //是否折叠空白
-      },
-      config: config.template,
-      tinyPath: './static'
-    }),
 
-    new CopyWebpackPlugin({
-      patterns: [
-        {from: path.resolve(__dirname, '../static'), to: path.resolve(__dirname, '../dist/static')},
-      ],
-      options: {}
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {from: path.resolve(__dirname, '../static'), to: path.resolve(__dirname, '../dist/static')},
+    //   ],
+    //   options: {}
+    // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       //个人习惯将css文件放在单独目录下
@@ -87,7 +79,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new CssMinimizerWebpackPlugin(),
 
-    new WebpackManifestPlugin()
+    new WebpackManifestPlugin(),
+
+    new cdnUpload()
   ],
 
 })
@@ -97,5 +91,5 @@ if (false) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
-module.exports = webpackConfig
+export default webpackConfig
 

@@ -1,5 +1,5 @@
 {
-  "name": "ex",
+  "name": "scratches",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-plugin-forbid-global": "workspace:^"
+    "tapable": "^2.2.1"
   }
 }
