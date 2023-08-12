@@ -12,14 +12,10 @@ var webpack_base_conf_js_1 = __importDefault(require("./webpack.base.conf.js"));
 function resolve(dir) {
     return path_1.default.join(__dirname, dir);
 }
-var entry = {};
-Object.keys(webpack_base_conf_js_1.default.entry).forEach(function (name) {
-    entry[name] = [resolve('./hot-reload-client.js')].concat(webpack_base_conf_js_1.default.entry[name]);
-});
-exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
+var config = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
     mode: 'development',
-    devtool: 'eval-cheap-module-source-map',
-    entry: entry,
+    // devtool: 'eval-cheap-module-source-map',
+    devtool: 'inline-source-map',
     output: {},
     module: {
         rules: [
@@ -67,3 +63,7 @@ exports.default = (0, webpack_merge_1.merge)(webpack_base_conf_js_1.default, {
         // new AddAssetHtmlPlugin({ filepath: resolve( '/dist/dll/vue.dll.8e9882.js') }),
     ]
 });
+Object.keys(config.entry).forEach(function (name) {
+    config.entry[name] = [resolve('./hot-reload-client.js')].concat(config.entry[name]);
+});
+exports.default = config;

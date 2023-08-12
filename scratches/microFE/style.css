@@ -1,0 +1,28 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.nav{
+    width: 200px;
+    position: fixed;
+    left:0;
+    top:0;
+    height: 100vh;
+    border-right: 1px solid #ccc;
+
+}
+.nav>div{
+    line-height: 30px;
+    color: #fff;
+    background: #9aaabf;
+    text-align: center;
+    cursor: pointer;
+}
+
+.content{
+    flex: 1;
+    margin-left: 200px;
+    padding: 20px;
+}

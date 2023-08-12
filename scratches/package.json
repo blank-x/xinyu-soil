@@ -1,21 +1,5 @@
 {
-  "name": "scratches",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@rollup/plugin-commonjs": "^25.0.2",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "lodash": "^4.17.21",
-    "rollup": "^3.26.2",
-    "tapable": "^2.2.1",
-    "underscore": "^1.13.6"
-  }
+	"dependencies": {
+		"webpack": "^5.88.2"
+	}
 }

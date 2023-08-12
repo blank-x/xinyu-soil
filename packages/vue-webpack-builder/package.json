@@ -15,7 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.22.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@types/estree": "^1.0.1",
+    "@umijs/babel-preset-umi": "3.5.41",
+    "@umijs/deps": "^3.5.41",
+    "@umijs/utils": "^4.0.73",
     "babel-plugin-transform-vue-jsx": "^4.0.1",
     "chalk": "^4.1.2",
     "eslint": "^8.43.0",

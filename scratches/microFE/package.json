@@ -1,0 +1,10 @@
+{
+  "name": "microFE",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "serve": "^11.3.2"
+  }
+}

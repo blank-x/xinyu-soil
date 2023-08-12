@@ -1,8 +1,8 @@
-import { createApp, ref } from 'vue';
+// import { createApp, ref } from 'vue';
 
-import Particles from 'x-particles'
+// import Particles from 'x-particles'
 
-import App from "./App.vue";
+// import App from "./App.vue";
 // import axios from "axios";
 
 
@@ -14,7 +14,11 @@ import App from "./App.vue";
 // Vue.prototype.$_axios = axios;
 
 
-const app = createApp(App)
+// const app = createApp(App)
+//
+// app.mount('#app')
 
-app.mount('#app')
+import formatTag from './formatTag.js';
+
+console.log(formatTag);
 

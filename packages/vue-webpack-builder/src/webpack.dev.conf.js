@@ -9,15 +9,13 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const entry = {};
-Object.keys(baseWebpackConfig.entry).forEach((name) => {
-  entry[name] = [resolve('./hot-reload-client.js')].concat(baseWebpackConfig.entry[name]);
-});
 
-export default merge(baseWebpackConfig, {
+
+const config = merge(baseWebpackConfig, {
   mode: 'development',
-  devtool: 'eval-cheap-module-source-map',
-  entry,
+  // devtool: 'eval-cheap-module-source-map',
+  devtool: 'inline-source-map',
+
   output: {},
   module: {
     rules: [
@@ -66,3 +64,8 @@ export default merge(baseWebpackConfig, {
     // new AddAssetHtmlPlugin({ filepath: resolve( '/dist/dll/vue.dll.8e9882.js') }),
   ]
 });
+Object.keys(config.entry).forEach((name) => {
+  config.entry[name] = [resolve('./hot-reload-client.js')].concat(config.entry[name]);
+});
+export default config
+

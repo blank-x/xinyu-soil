@@ -47,7 +47,18 @@ export default {
           {
             loader: "babel-loader",
             options: {
+              "sourceType": 'unambiguous',
               "presets": [
+                // [path.resolve(__dirname, '../node_modules/@umijs/babel-preset-umi/app.js'), {
+                //   nodeEnv: 'development',
+                //   dynamicImportNode: true,
+                //   autoCSSModules: true,
+                //   svgr: true,
+                //   env: {
+                //     targets: { chrome: 49, firefox: 64, safari: 10, edge: 13, ios: 10 }
+                //   },
+                //   import: []
+                // }]
                 [
                   "@babel/preset-env",
                   {
@@ -57,7 +68,8 @@ export default {
                 ]
               ],
               "plugins": [
-                'transform-vue-jsx'
+                'transform-vue-jsx',
+                // '@babel/plugin-transform-modules-commonjs'
               ]
             },
           },
