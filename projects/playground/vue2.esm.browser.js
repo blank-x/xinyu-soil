@@ -6215,6 +6215,7 @@ var ref = {
         registerRef(vnode);
     },
     update(oldVnode, vnode) {
+        debugger
         if (oldVnode.data.ref !== vnode.data.ref) {
             registerRef(oldVnode, true);
             registerRef(vnode);
@@ -6921,6 +6922,9 @@ function createPatchFunction(backend) {
         }
     }
     return function patch(oldVnode, vnode, hydrating, removeOnly) {
+        if(oldVnode && oldVnode.context){
+            debugger
+        }
         if (isUndef(vnode)) {
             if (isDef(oldVnode))
                 invokeDestroyHook(oldVnode);
@@ -6937,6 +6941,7 @@ function createPatchFunction(backend) {
             const isRealElement = isDef(oldVnode.nodeType);
             if (!isRealElement && sameVnode(oldVnode, vnode)) {
                 // patch existing root node
+                // debugger;
                 patchVnode(oldVnode, vnode, insertedVnodeQueue, null, null, removeOnly);
             }
             else {
@@ -6945,10 +6950,12 @@ function createPatchFunction(backend) {
                     // check if this is server-rendered content and if we can perform
                     // a successful hydration.
                     if (oldVnode.nodeType === 1 && oldVnode.hasAttribute(SSR_ATTR)) {
+                        
                         oldVnode.removeAttribute(SSR_ATTR);
                         hydrating = true;
                     }
                     if (isTrue(hydrating)) {
+                        
                         if (hydrate(oldVnode, vnode, insertedVnodeQueue)) {
                             invokeInsertHook(vnode, insertedVnodeQueue, true);
                             return oldVnode;
@@ -6961,6 +6968,7 @@ function createPatchFunction(backend) {
                                 'full client-side render.');
                         }
                     }
+                
                     // either not server-rendered, or hydration failed.
                     // create an empty node and replace it
                     oldVnode = emptyNodeAt(oldVnode);
@@ -7027,6 +7035,7 @@ var directives$1 = {
     }
 };
 function updateDirectives(oldVnode, vnode) {
+    debugger
     if (oldVnode.data.directives || vnode.data.directives) {
         _update(oldVnode, vnode);
     }
@@ -7138,6 +7147,7 @@ function callHook(dir, hook, vnode, oldVnode, isDestroy) {
 var baseModules = [ref, directives$1];
 
 function updateAttrs(oldVnode, vnode) {
+    debugger
     const opts = vnode.componentOptions;
     if (isDef(opts) && opts.Ctor.options.inheritAttrs === false) {
         return;
@@ -7241,6 +7251,7 @@ var attrs = {
 };
 
 function updateClass(oldVnode, vnode) {
+    debugger
     const el = vnode.elm;
     const data = vnode.data;
     const oldData = oldVnode.data;
@@ -7872,6 +7883,7 @@ function remove(name, handler, capture, _target) {
     handler._wrapper || handler, capture);
 }
 function updateDOMListeners(oldVnode, vnode) {
+    debugger
     if (isUndef(oldVnode.data.on) && isUndef(vnode.data.on)) {
         return;
     }
@@ -7893,6 +7905,7 @@ var events = {
 
 let svgContainer;
 function updateDOMProps(oldVnode, vnode) {
+    debugger
     if (isUndef(oldVnode.data.domProps) && isUndef(vnode.data.domProps)) {
         return;
     }
@@ -8104,6 +8117,7 @@ const normalize = cached(function (prop) {
     }
 });
 function updateStyle(oldVnode, vnode) {
+    debugger
     const data = vnode.data;
     const oldData = oldVnode.data;
     if (isUndef(data.staticStyle) &&

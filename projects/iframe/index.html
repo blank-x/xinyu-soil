@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .side{
+      width: 150px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top:0;
+    }
+    .content{
+      margin-left: 150px;
+      width: calc(100vw - 150px);
+    }
+    iframe{
+      width: 100%;
+      /* height: 100vh; */
+      border: 1px solid red;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="side">
+    <p>/aaa</p>
+    <p>/bbb</p>
+  </div>
+  <div class="content">
+    <iframe src="http://localhost:5001/iframe1.html" id="if"  frameborder="0" scrolling="no"></iframe>
+  </div>
+  <script>
+    const navs = document.querySelectorAll('.side p');
+    const iframe1 = document.querySelector('#if');
+    for(let i = 0; i < navs.length; i++){
+      navs[i].addEventListener('click', function(){
+        const url = this.innerText;
+        history.pushState(null, null, url);
+        iframe1.src =  iframe1.src.replace(/\#/)+ '#' + url;
+      })
+    }
+    window.addEventListener('popstate', function(){
+      console.log('popstate');
+      console.log(location.href)
+    })
+  </script>
+</body>
+</html>
