@@ -7,13 +7,29 @@
 </head>
 <body>
   <div id="app">
-    <p>obj: {{msg2}} </p>
-   </div>
+    <p>msg2: {{msg2}}</p><com1 :d="msg2.name"></com1>
+  </div>
+
   <script type="module">
     import Vue from './vue2.esm.browser.js';
+
+    const com1 = {
+      template: `
+        <div>
+          <p>obj111 {{d}} </p>
+        </div>
+      `,
+      props: {
+        d: String,
+      }
+
+    }
     
     new Vue({
       el: '#app',
+      components: {
+        com1,
+      },
       created() {
         this.msg2 = Vue.observable({name: 'hello'});
         setTimeout(() => {
