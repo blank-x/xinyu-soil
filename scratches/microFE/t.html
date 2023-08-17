@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="history.pushState('/aaa')">aaaa</button>
+  <button onclick="history.pushState('/aaa')">bbbb</button>
+  <script>
+
+    new Proxy(window, {
+      get(target, key){
+        console.log('get', key);
+        if(key === 'onpopstate'){
+          return function(){
+            console.log('onpopstate');
+          }
+        }
+        return target[key];
+      },
+      set(target, key, value){
+        console.log('set', key, value);
+        target[key] = value;
+        return true;
+      }
+    })
+    
+    window.onpopstate = function(){
+      console.log('onpopstate');
+    }
+ 
+
+  </script>
+
+  111
+</body>
+</html>
