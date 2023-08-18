@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "webpack": "^5.88.2"
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^1.5.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
